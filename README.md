@@ -12,4 +12,4 @@ This site has various images from an explorer named Jacques Cousteau from the ar
 
 **Github**
 
-- [Link to the project on github](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+- [Link to the project on github](https://github.com/Ian-Diz/se_project_aroundtheus.git
