@@ -1,0 +1,224 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/Inter Web/Inter-Medium.woff2") format("woff2"),
+    url("../fonts/Inter Web/Inter-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Inter Web/Inter-Regular.woff2") format("woff2"),
+    url("../fonts/Inter Web/Inter-Regular.woff") format("woff");
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .profile {
+    min-width: 282px;
+    height: 286px;
+    margin: 0 19px 0 19px;
+    padding-top: 42px;
+    flex-direction: column;
+  }
+
+  .profile__image {
+    margin: 0 auto 0 auto;
+  }
+
+  .profile__layout {
+    display: grid;
+    grid-template-columns: 28px 196px 18px;
+    grid-template-rows: 22px 14px;
+    grid-gap: 14px 10px;
+    margin: 30px auto 0 auto;
+  }
+
+  .profile__title {
+    margin: 0;
+    font-size: 22px;
+    text-align: center;
+    grid-column: 2/2;
+    grid-row: 1/2;
+  }
+
+  .profile__subtitle {
+    margin: 0;
+    font-size: 14px;
+    text-align: center;
+    grid-column: 2/2;
+    grid-row: 2/2;
+  }
+
+  .profile__edit {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    grid-column: 3/3;
+    grid-row: 1/1;
+  }
+
+  .profile__add {
+    width: 282px;
+    height: 50px;
+    margin: 36px auto 0 auto;
+    background-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .profile {
+    width: 768px;
+    height: 120px;
+    margin: 0 auto 0 auto;
+    padding-top: 40px;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+
+  .profile__layout {
+    display: grid;
+    grid-template-columns: 373px 24px;
+    grid-template-rows: 39px 22px;
+    grid-gap: 16px 18px;
+    margin: 22px 0 0 30px;
+    width: 415px;
+  }
+
+  .profile__title {
+    margin: 0;
+    font-size: 42px;
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+
+  .profile__subtitle {
+    margin: 0;
+    font-size: 18px;
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+
+  .profile__edit {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    grid-column: 2/2;
+    grid-row: 1/1;
+    align-self: end;
+  }
+
+  .profile__add {
+    width: 150px;
+    height: 50px;
+    margin: 35px 15px 0 auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .profile {
+    max-width: 880px;
+    height: 120px;
+    margin: 0 200px 0 200px;
+    padding-top: 40px;
+  }
+
+  .profile__image {
+    margin: 0;
+  }
+
+  .profile__layout {
+    display: grid;
+    grid-template-columns: 373px 24px;
+    grid-template-rows: 39px 22px;
+    grid-gap: 16px 18px;
+    margin: 22px 0 0 30px;
+    width: 415px;
+  }
+
+  .profile__title {
+    margin: 0;
+    font-size: 42px;
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+
+  .profile__subtitle {
+    margin: 0;
+    font-size: 18px;
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+
+  .profile__edit {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    grid-column: 2/2;
+    grid-row: 1/1;
+    align-self: end;
+  }
+
+  .profile__add {
+    width: 150px;
+    height: 50px;
+    margin: 35px 0 0 auto;
+  }
+}
+
+.profile {
+  display: flex;
+}
+
+.profile__image {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.profile__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.profile__subtitle {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  color: #ffffff;
+  align-self: flex-end;
+  line-height: 1.2;
+}
+
+.profile__edit {
+  border: 1px solid #ffffff;
+  background-image: url(../images/edit.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile__edit:hover {
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
+
+.profile__add {
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background-image: url(../images/plus.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile__add:hover {
+  opacity: 0.6;
+  transition-duration: 0.3s;
+}
