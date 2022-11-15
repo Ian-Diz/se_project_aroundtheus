@@ -12,7 +12,6 @@
 }
 
 .profile__layout {
-  margin: 0 auto 0 auto;
   display: grid;
   grid-template-columns: 373px 24px;
   grid-template-rows: 39px 22px;
@@ -60,7 +59,6 @@
   background-repeat: no-repeat;
   width: 22px;
   height: 22px;
-  margin: 0;
   grid-column: 2/2;
   grid-row: 1/1;
   align-self: center;
