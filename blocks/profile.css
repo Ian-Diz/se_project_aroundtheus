@@ -1,6 +1,7 @@
 .profile {
   display: flex;
   padding-top: 40px;
+  margin: 0 auto 0 auto;
 }
 
 .profile__image {
@@ -11,10 +12,11 @@
 }
 
 .profile__layout {
+  margin: 0 auto 0 auto;
   display: grid;
   grid-template-columns: 373px 24px;
   grid-template-rows: 39px 22px;
-  grid-gap: 16px 18px;
+  gap: 16px 18px;
   margin: 22px 0 0 30px;
   width: 415px;
 }
@@ -29,6 +31,10 @@
   font-size: 42px;
   grid-column: 1/1;
   grid-row: 1/1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  align-self: center;
 }
 
 .profile__subtitle {
@@ -42,6 +48,9 @@
   font-size: 18px;
   grid-column: 1/1;
   grid-row: 2/2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit {
@@ -54,8 +63,9 @@
   margin: 0;
   grid-column: 2/2;
   grid-row: 1/1;
-  align-self: end;
-  background-color: #000000;
+  align-self: center;
+  margin: 8px 0 0 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .profile__edit:hover {
@@ -72,7 +82,7 @@
   background-repeat: no-repeat;
   width: 150px;
   height: 50px;
-  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .profile__add:hover {
@@ -84,7 +94,6 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .profile {
     min-width: 282px;
-    margin: 0 auto 0 auto;
     padding-top: 42px;
     flex-direction: column;
   }
@@ -94,7 +103,6 @@
   }
 
   .profile__layout {
-    display: grid;
     grid-template-columns: 10px 196px 18px;
     grid-template-rows: 22px 14px;
     gap: 14px 10px;
@@ -104,32 +112,26 @@
   }
 
   .profile__title {
-    margin: 0;
     font-size: 22px;
     text-align: center;
     grid-column: 2/2;
-    grid-row: 1/2;
   }
 
   .profile__subtitle {
-    margin: 0;
     font-size: 14px;
     text-align: center;
     grid-column: 2/2;
-    grid-row: 2/2;
   }
 
   .profile__edit {
     width: 18px;
     height: 18px;
-    margin: 0;
     grid-column: 3/3;
-    grid-row: 1/1;
+    margin: 0;
   }
 
   .profile__add {
     width: 282px;
-    height: 50px;
     margin: 36px auto 0 auto;
     background-size: 16px;
   }
@@ -138,7 +140,6 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .profile {
     width: 768px;
-    margin: 0 auto 0 auto;
     padding-top: 40px;
   }
 

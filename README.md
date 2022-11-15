@@ -12,4 +12,4 @@ This site has various images from an explorer named Jacques Cousteau from the ar
 
 **Github**
 
-- [Link to the project on github](https://github.com/Ian-Diz/se_project_aroundtheus.git
+- [Link to the project on github](https://ian-diz.github.io/se_project_aroundtheus/)

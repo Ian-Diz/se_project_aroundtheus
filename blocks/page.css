@@ -1,9 +1,9 @@
 .page {
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   background: #000000;
   position: relative;
   margin: 0 auto 0 auto;
-  padding: 0;
+  padding: 0 auto 0 auto;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
