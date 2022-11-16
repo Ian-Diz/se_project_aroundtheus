@@ -40,6 +40,39 @@
           </div>
           <button type="button" class="profile__add" aria-label="Add"></button>
         </section>
+        <section>
+          <form class="profile__edit-profile edit-profile">
+            <fieldset class="edit-profile__fieldset">
+              <img
+                class="edit-profile__close"
+                alt="Close button image"
+                src="./images/Close Icon.svg"
+              />
+              <p class="edit-profile__header">Edit Profile</p>
+              <input
+                class="edit-profile__name"
+                type="text"
+                placeholder="Name"
+                required
+              />
+              <input
+                class="edit-profile__description"
+                type="text"
+                placeholder="Description"
+                required
+                form="modal__container"
+              />
+              <button
+                class="edit-profile__save"
+                type="save"
+                id="save"
+                aria-label="Save"
+              >
+                Save
+              </button>
+            </fieldset>
+          </form>
+        </section>
         <section class="cards">
           <article class="card">
             <img
