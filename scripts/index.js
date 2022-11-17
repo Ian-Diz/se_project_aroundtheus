@@ -1,4 +1,20 @@
-let initialCards = [object1, object2, object3, object4, object5, object6];
+let main = document.querySelector(".main");
+let profile = main.querySelector(".profile");
+let editButton = profile.querySelector(".profile__edit");
+let editProfile = profile.querySelector(".edit-profile");
+let closeButton = editProfile.querySelector(".edit-profile__close");
+
+editButton.addEventListener("click", openEdit);
+
+function openEdit() {
+  editProfile.classList.add("edit-profile_opened");
+}
+
+closeButton.addEventListener("click", closeEdit);
+
+function closeEdit() {
+  editProfile.classList.remove("edit-profile_opened");
+}
 
 let object1 = {
   name: "Yosemite Valley",
@@ -29,3 +45,5 @@ let object6 = {
   name: "Lago di Braies",
   link: "../images/lago-di-braieslago.svg",
 };
+
+let initialCards = [object1, object2, object3, object4, object5, object6];

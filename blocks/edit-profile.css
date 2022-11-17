@@ -9,13 +9,13 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
-.edit-profile__opened {
-  display: block;
+.edit-profile_opened {
+  display: flex;
 }
 
 .edit-profile__close:hover {
