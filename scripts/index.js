@@ -35,34 +35,34 @@ const profile = main.querySelector(".profile");
 
 const editButton = profile.querySelector(".profile__edit");
 
-const editProfile = main.querySelector(".edit-profile");
+const popup = main.querySelector(".popup");
 
-const closeButton = editProfile.querySelector(".edit-profile__close");
+const closeButton = popup.querySelector(".popup__close");
 
-const form = editProfile.querySelector(".edit-profile__form");
+const form = popup.querySelector(".popup__form");
 
-let profileName = editProfile.querySelector(".edit-profile_input_name");
+const profileName = popup.querySelector(".popup_input_name");
 
-let profileDesc = editProfile.querySelector(".edit-profile_input_description");
+const profileDesc = popup.querySelector(".popup_input_description");
 
-let profileTitle = profile.querySelector(".profile__title");
+const profileTitle = profile.querySelector(".profile__title");
 
-let profileSubtitle = profile.querySelector(".profile__subtitle");
+const profileSubtitle = profile.querySelector(".profile__subtitle");
 
-const saveButton = editProfile.querySelector(".edit-profile__save");
+const saveButton = popup.querySelector(".popup__save");
 
 const cards = main.querySelector(".cards");
 
-let card = cards.querySelectorAll(".card");
+const card = cards.querySelectorAll(".card");
 
 function openEdit() {
   profileName.value = profileTitle.textContent;
   profileDesc.value = profileSubtitle.textContent;
-  editProfile.classList.add("edit-profile_opened");
+  popup.classList.add("popup_opened");
 }
 
 function closeEdit() {
-  editProfile.classList.remove("edit-profile_opened");
+  popup.classList.remove("popup_opened");
 }
 
 function saveEdit(event) {

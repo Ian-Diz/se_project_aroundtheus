@@ -40,36 +40,38 @@
           </div>
           <button type="button" class="profile__add" aria-label="Add"></button>
         </section>
-        <section class="edit-profile">
-          <div class="edit-profile__container">
+        <section class="popup">
+          <div class="popup__container">
             <button
               type="button"
-              class="edit-profile__close-button"
+              class="popup__close-button"
               aria-label="Close"
             >
               <img
-                class="edit-profile__close"
+                class="popup__close"
                 alt="Close button image"
                 src="./images/close-icon.svg"
               />
             </button>
-            <form class="edit-profile__form">
-              <fieldset class="edit-profile__fieldset">
-                <h2 class="edit-profile__header">Edit Profile</h2>
+            <form class="popup__form" name="editForm">
+              <fieldset class="popup__fieldset">
+                <h2 class="popup__header">Edit Profile</h2>
                 <input
-                  class="edit-profile__input edit-profile_input_name"
+                  class="popup__input popup_input_name"
                   type="text"
                   placeholder="Name"
                   required
+                  name="nameInput"
                 />
                 <input
-                  class="edit-profile__input edit-profile_input_description"
+                  class="popup__input popup_input_description"
                   type="text"
                   placeholder="Description"
                   required
+                  name="descriptionInput"
                 />
                 <button
-                  class="edit-profile__save"
+                  class="popup__save"
                   type="submit"
                   id="save"
                   aria-label="Save"
