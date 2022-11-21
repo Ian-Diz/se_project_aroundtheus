@@ -39,37 +39,46 @@
             ></button>
           </div>
           <button type="button" class="profile__add" aria-label="Add"></button>
-          <form class="profile__edit-profile edit-profile">
-            <fieldset class="edit-profile__fieldset">
+        </section>
+        <section class="edit-profile">
+          <div class="edit-profile__container">
+            <button
+              type="button"
+              class="edit-profile__close-button"
+              aria-label="Close"
+            >
               <img
                 class="edit-profile__close"
                 alt="Close button image"
-                src="./images/Close Icon.svg"
+                src="./images/close-icon.svg"
               />
-              <p class="edit-profile__header">Edit Profile</p>
-              <input
-                class="edit-profile__name"
-                type="text"
-                placeholder="Name"
-                required
-              />
-              <input
-                class="edit-profile__description"
-                type="text"
-                placeholder="Description"
-                required
-                form="modal__container"
-              />
-              <button
-                class="edit-profile__save"
-                type="save"
-                id="save"
-                aria-label="Save"
-              >
-                Save
-              </button>
-            </fieldset>
-          </form>
+            </button>
+            <form class="edit-profile__form">
+              <fieldset class="edit-profile__fieldset">
+                <h2 class="edit-profile__header">Edit Profile</h2>
+                <input
+                  class="edit-profile__input edit-profile_input_name"
+                  type="text"
+                  placeholder="Name"
+                  required
+                />
+                <input
+                  class="edit-profile__input edit-profile_input_description"
+                  type="text"
+                  placeholder="Description"
+                  required
+                />
+                <button
+                  class="edit-profile__save"
+                  type="submit"
+                  id="save"
+                  aria-label="Save"
+                >
+                  Save
+                </button>
+              </fieldset>
+            </form>
+          </div>
         </section>
         <section class="cards">
           <template id="card">

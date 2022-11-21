@@ -2,11 +2,11 @@
   background: white;
   border-radius: 10px;
   position: relative;
-  display: block;
   display: grid;
   grid-template-columns: 241px 41px;
   grid-template-rows: 282px 29px;
   gap: 25px 0;
+  padding-bottom: 25px;
 }
 
 .card__image {
