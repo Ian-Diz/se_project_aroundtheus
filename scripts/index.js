@@ -1,31 +1,31 @@
 let initialCards = [
   {
     name: "Yosemite Valley",
-    link: "./images/yosemite-valleyyosemite.svg",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
   },
 
   {
     name: "Lake Louise",
-    link: "./images/lake-louiselake.svg",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
   },
 
   {
     name: "Bald Mountains",
-    link: "./images/bald-mountainsbald.svg",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
   },
   {
     name: "Latemar",
-    link: "./images/latemarlatemar.svg",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
   },
 
   {
     name: "Vanoise National Park",
-    link: "./images/vanoise-national-parkvanoise.svg",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
   },
 
   {
     name: "Lago di Braies",
-    link: "./images/lago-di-braieslago.svg",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
   },
 ];
 
@@ -94,6 +94,7 @@ function closeEdit() {
   popupImage.classList.remove("popup_image_opened");
   form.classList.remove("popup_form_hidden");
   popupTitle.classList.remove("popup_title_opened");
+  closeButton.classList.remove("popup_close_mobile");
 }
 
 function save(event) {
@@ -142,11 +143,11 @@ function getCardElement(data) {
   }
 
   function openImage() {
-    popup.head;
     popup.classList.add("popup_opened");
     popupImage.classList.add("popup_image_opened");
     form.classList.add("popup_form_hidden");
     popupTitle.classList.add("popup_title_opened");
+    closeButton.classList.add("popup_close_mobile");
     popupTitle.textContent = cardTitle.textContent;
     popupImage.src = data.link;
   }

@@ -2,6 +2,8 @@
   z-index: 1;
   position: fixed;
   bottom: 0;
+  right: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -13,42 +15,26 @@
 
 .popup_opened {
   display: flex;
-  z-index: 1;
+}
+
+.popup__container {
   position: fixed;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  line-height: 0;
 }
 
 .popup__image {
   display: none;
-}
-
-.popup_image_opened {
-  display: flex;
   max-width: 75vw;
   max-height: 75vh;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-content: center;
 }
 
-.popup__title {
-  display: none;
-  color: #ffffff;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-size: 12px;
-  line-height: 1.2em;
-  margin: 0;
-}
-
-.popup_title_opened {
+.popup_image_opened {
   display: flex;
-}
-
-.popup__container {
-  position: relative;
-  margin: 0;
-  line-height: 0;
 }
 
 .popup__close-button {
@@ -64,10 +50,25 @@
 
 .popup__close {
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: -45px;
+  right: -45px;
   width: 40px;
   height: 40px;
+}
+
+.popup__title {
+  display: none;
+  color: #ffffff;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 1.2em;
+  margin: 0;
+  width: fit-content;
+}
+
+.popup_title_opened {
+  display: flex;
 }
 
 .popup__form {
@@ -110,7 +111,7 @@
   height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 30px 34px 0 34px;
+  margin: 30px 36px 0 36px;
 }
 
 .popup__label {
@@ -141,15 +142,23 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
+  .popup__container {
+    max-width: 282px;
+  }
+
   .popup__fieldset {
-    width: 282px;
+    max-width: 282px;
   }
 
   .popup__close {
-    top: -40px;
-    right: 0px;
+    top: -29px;
+    right: 0;
     width: 26px;
     height: 26px;
+  }
+
+  .popup_close_mobile {
+    right: -29px;
   }
 
   .popup__header {
@@ -158,15 +167,17 @@
     width: 238px;
   }
 
-  .popup__name {
-    margin: 75px 20px 0 20px;
+  .popup__input {
     width: 238px;
+  }
+
+  .popup_input_name {
+    margin: 75px 22px 0 22px;
     font-size: 14px;
   }
 
-  .popup__description {
-    margin: 30px 20px 0 20px;
-    width: 238px;
+  .popup_input_description {
+    margin: 30px 22px 0 22px;
     font-size: 14px;
   }
 
