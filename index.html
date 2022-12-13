@@ -42,6 +42,7 @@
         </section>
         <section class="popup">
           <div class="popup__container">
+            <img src="boop" alt="" class="popup__image" />
             <button
               type="button"
               class="popup__close-button"
@@ -53,20 +54,19 @@
                 src="./images/close-icon.svg"
               />
             </button>
-            <form class="popup__form" name="editForm">
+            <p class="popup__title">Hello</p>
+            <form class="popup__form" name="editForm" id="">
               <fieldset class="popup__fieldset">
-                <h2 class="popup__header">Edit Profile</h2>
+                <h2 class="popup__header"></h2>
                 <input
                   class="popup__input popup_input_name"
                   type="text"
-                  placeholder="Name"
                   required
                   name="nameInput"
                 />
                 <input
                   class="popup__input popup_input_description"
                   type="text"
-                  placeholder="Description"
                   required
                   name="descriptionInput"
                 />
@@ -87,10 +87,27 @@
             <article class="card">
               <img class="card__image" alt="" src="" />
               <h2 class="card__title"></h2>
-              <button class="card__like" aria-label="Like" type="Button">
+              <button
+                class="card__like"
+                aria-label="Like"
+                type="Button"
+                id="like"
+              >
                 <img
                   alt="A heart-shaped like button to show your appreciation"
                   src="./images/like.svg"
+                  id="likeImage"
+                />
+              </button>
+              <button
+                class="card__trash"
+                aria-label="Trash"
+                type="Button"
+                id="trash"
+              >
+                <img
+                  alt="A trash icon to delete the card"
+                  src="./images/Trash.svg"
                 />
               </button>
             </article>
