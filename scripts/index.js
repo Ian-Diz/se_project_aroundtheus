@@ -49,9 +49,9 @@ const closeButton = popup.querySelector(".popup__close");
 
 const form = popup.querySelector(".popup__form");
 
-const profileName = popup.querySelector(".popup_input_name");
+const profileName = popup.querySelector("input[name='nameInput'");
 
-const profileDesc = popup.querySelector(".popup_input_description");
+const profileDesc = popup.querySelector("input[name='descriptionInput'");
 
 const profileTitle = profile.querySelector(".profile__title");
 

@@ -167,23 +167,14 @@
   }
 
   .popup__header {
-    margin: 25px 22px 0px 22px;
+    margin: 25px 22px 53px 22px;
     font-size: 18px;
     width: 238px;
   }
 
   .popup__input {
     width: 238px;
-  }
-
-  .popup_input_name {
-    margin: 75px 22px 0 22px;
-    font-size: 14px;
-  }
-
-  .popup_input_description {
     margin: 30px 22px 0 22px;
-    font-size: 14px;
   }
 
   .popup__save {
