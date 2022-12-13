@@ -1,4 +1,4 @@
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
@@ -162,6 +162,6 @@ function getCardElement(data) {
 }
 
 initialCards.forEach(function (item) {
-  let insertCard = getCardElement(item);
-  cards.append(insertCard);
+  let cardElement = getCardElement(item);
+  cards.append(cardElement);
 });
