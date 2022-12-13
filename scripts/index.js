@@ -70,6 +70,9 @@ const formAdd = form.querySelector("#add");
 const saveButton = popup.querySelector(".popup__save");
 
 function openEdit() {
+  form.classList.remove("popup_form_hidden");
+  popupImage.classList.remove("popup_image_opened");
+  popupTitle.classList.remove("popup_title_opened");
   profileName.value = profileTitle.textContent;
   profileDesc.value = profileSubtitle.textContent;
   popupHeader.textContent = "Edit Profile";
@@ -80,20 +83,17 @@ function openEdit() {
 }
 
 function openAdd() {
+  openEdit();
   profileName.value = "";
   profileDesc.value = "";
   popupHeader.textContent = "New place";
   profileName.setAttribute("placeholder", "Title");
   profileDesc.setAttribute("placeholder", "Image link");
   form.setAttribute("id", "add");
-  popup.classList.add("popup_opened");
 }
 
 function closeEdit() {
   popup.classList.remove("popup_opened");
-  popupImage.classList.remove("popup_image_opened");
-  form.classList.remove("popup_form_hidden");
-  popupTitle.classList.remove("popup_title_opened");
   closeButton.classList.remove("popup_close_mobile");
 }
 
