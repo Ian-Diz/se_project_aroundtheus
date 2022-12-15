@@ -16,7 +16,7 @@
   border-top-right-radius: 10px;
 }
 
-.card__image:hover {
+.card__image {
   cursor: pointer;
 }
 
@@ -42,6 +42,12 @@
   margin: 6px 20px 0 0;
   border: none;
   background-color: #ffffff;
+  background-image: url(../images/like.svg);
+  background-repeat: no-repeat;
+}
+
+.card_like_activate {
+  background-image: url(../images/activatedLike.svg);
 }
 
 .card__like:hover {

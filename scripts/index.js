@@ -33,128 +33,125 @@ const main = document.querySelector(".main");
 
 const profile = main.querySelector(".profile");
 
-const cards = main.querySelector(".cards");
-
-const card = cards.querySelector("#card");
-
 const editButton = profile.querySelector(".profile__edit");
 
 const addButton = profile.querySelector(".profile__add");
 
-const popup = main.querySelector(".popup");
+const popups = main.querySelector(".popups");
 
-const popupContainer = popup.querySelector(".popup__container");
+const editPopup = popups.querySelector("#editPopup");
 
-const closeButton = popup.querySelector(".popup__close");
+const addPopup = popups.querySelector("#addPopup");
 
-const form = popup.querySelector(".popup__form");
+const imagePopup = popups.querySelector("#imagePopup");
 
-const profileName = popup.querySelector("input[name='nameInput'");
+const closeEditButton = popups.querySelector("#closeEdit");
 
-const profileDesc = popup.querySelector("input[name='descriptionInput'");
+const closeAddButton = popups.querySelector("#closeAdd");
+
+const closeImageButton = popups.querySelector("#closeImage");
+
+const editForm = popups.querySelector("#editForm");
+
+const addForm = popups.querySelector("#addForm");
+
+const popupName = popups.querySelector("#inputName");
+
+const popupDesc = popups.querySelector("#inputDesc");
 
 const profileTitle = profile.querySelector(".profile__title");
 
 const profileSubtitle = profile.querySelector(".profile__subtitle");
 
-const popupHeader = popup.querySelector(".popup__header");
+const popupTitle = addForm.querySelector("#inputTitle");
 
-const popupTitle = popup.querySelector(".popup__title");
+const popupLink = addForm.querySelector("#inputLink");
 
-const popupImage = popup.querySelector(".popup__image");
+const popupImageTitle = imagePopup.querySelector(".popup__title");
 
-const formEdit = form.querySelector("#save");
+const popupImage = imagePopup.querySelector(".popup__image");
 
-const formAdd = form.querySelector("#add");
+const saveButton = popups.querySelector(".popup__save");
 
-const saveButton = popup.querySelector(".popup__save");
+const cards = main.querySelector(".cards");
 
-function openEdit() {
-  form.classList.remove("popup_form_hidden");
-  popupImage.classList.remove("popup_image_opened");
-  popupTitle.classList.remove("popup_title_opened");
-  profileName.value = profileTitle.textContent;
-  profileDesc.value = profileSubtitle.textContent;
-  popupHeader.textContent = "Edit Profile";
-  profileName.setAttribute("placeholder", "Name");
-  profileDesc.setAttribute("placeholder", "Description");
-  form.setAttribute("id", "save");
+const card = cards.querySelectorAll(".card");
+
+function openPopup(popup) {
   popup.classList.add("popup_opened");
 }
 
+function closePopup() {
+  let activePopup = popups.querySelector(".popup_opened");
+  activePopup.classList.remove("popup_opened");
+}
+
+function openEdit() {
+  openPopup(editPopup);
+  popupName.value = profileTitle.textContent;
+  popupDesc.value = profileSubtitle.textContent;
+}
+
 function openAdd() {
-  openEdit();
-  profileName.value = "";
-  profileDesc.value = "";
-  popupHeader.textContent = "New place";
-  profileName.setAttribute("placeholder", "Title");
-  profileDesc.setAttribute("placeholder", "Image link");
-  form.setAttribute("id", "add");
+  openPopup(addPopup);
+  addForm.reset();
 }
 
-function closeEdit() {
-  popup.classList.remove("popup_opened");
-  closeButton.classList.remove("popup_close_mobile");
-}
-
-function save(event) {
+function saveEdit(event) {
   event.preventDefault();
-  if (form.id === "save") {
-    profileTitle.textContent = profileName.value;
-    profileSubtitle.textContent = profileDesc.value;
-  }
-  if (form.id === "add") {
-    let index = initialCards.push({
-      name: profileName.value,
-      link: profileDesc.value,
-    });
-    cards.prepend(getCardElement(initialCards[index - 1]));
-  }
-  closeEdit();
+  profileTitle.textContent = popupName.value;
+  profileSubtitle.textContent = popupDesc.value;
+  closePopup(editPopup);
 }
 
-form.addEventListener("submit", save);
-closeButton.addEventListener("click", closeEdit);
+function saveAdd(event) {
+  event.preventDefault();
+  let currentCard = initialCards;
+  let index = currentCard.push({
+    name: popupTitle.value,
+    link: popupLink.value,
+  });
+  cards.prepend(getCardElement(currentCard[index - 1]));
+  closePopup(addPopup);
+}
+
+editForm.addEventListener("submit", saveEdit);
+addForm.addEventListener("submit", saveAdd);
 editButton.addEventListener("click", openEdit);
 addButton.addEventListener("click", openAdd);
+closeEditButton.addEventListener("click", closePopup);
+closeAddButton.addEventListener("click", closePopup);
+closeImageButton.addEventListener("click", closePopup);
 
 function getCardElement(data) {
   let cardElement = cards.querySelector("#card").content.cloneNode(true);
   let cardImage = cardElement.querySelector(".card__image");
   let cardTitle = cardElement.querySelector(".card__title");
   let card = cardElement.querySelector(".card");
-  let likeButton = cardElement.querySelector(".card__like");
-  let likeImage = cardElement.querySelector("#likeImage");
-
-  function likeActivate() {
-    if (likeImage.src.includes("/images/like.svg")) {
-      likeImage.setAttribute("src", "./images/activatedLike.svg");
-      console.log(likeImage.src);
-    } else {
-      likeImage.setAttribute("src", "./images/like.svg");
-      console.log(likeImage.src);
-    }
-  }
 
   let deleteButton = cardElement.querySelector(".card__trash");
+
+  let likeButton = cardElement.querySelector(".card__like");
 
   function deleteActivate() {
     card.remove();
   }
 
+  function likeActivate() {
+    likeButton.classList.toggle("card_like_activate");
+  }
+
   function openImage() {
-    popup.classList.add("popup_opened");
-    popupImage.classList.add("popup_image_opened");
-    form.classList.add("popup_form_hidden");
-    popupTitle.classList.add("popup_title_opened");
-    closeButton.classList.add("popup_close_mobile");
-    popupTitle.textContent = cardTitle.textContent;
+    imagePopup.classList.add("popup_opened");
+    closeImageButton.classList.add("popup_close_mobile");
+    popupImageTitle.textContent = cardTitle.textContent;
     popupImage.src = data.link;
   }
 
-  deleteButton.addEventListener("click", deleteActivate);
-  likeButton.addEventListener("click", likeActivate);
   cardImage.addEventListener("click", openImage);
+  likeButton.addEventListener("click", likeActivate);
+  deleteButton.addEventListener("click", deleteActivate);
+
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;

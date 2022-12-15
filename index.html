@@ -40,27 +40,23 @@
           </div>
           <button type="button" class="profile__add" aria-label="Add"></button>
         </section>
-        <section class="popup">
-          <div class="popup__container">
-            <img src=" " alt="" class="popup__image" />
-            <button
-              type="button"
-              class="popup__close-button"
-              aria-label="Close"
-            >
-              <img
-                class="popup__close"
-                alt="Close button image"
-                src="./images/close-icon.svg"
-              />
-            </button>
-            <p class="popup__title">Hello</p>
-            <form class="popup__form" name="editForm" id="">
+        <section class="popups">
+          <div class="popup__container" id="editPopup">
+            <form class="popup__form" name="addForm" id="editForm">
               <fieldset class="popup__fieldset">
-                <h2 class="popup__header"></h2>
+                <button type="button" class="popup__button" aria-label="Close">
+                  <img
+                    class="popup__close"
+                    alt="Close button image"
+                    src="./images/close-icon.svg"
+                    id="closeEdit"
+                  />
+                </button>
+                <h2 class="popup__header">Edit Profile</h2>
                 <input
                   class="popup__input"
                   type="text"
+                  placeholder="Name"
                   required
                   name="nameInput"
                   id="inputName"
@@ -68,6 +64,7 @@
                 <input
                   class="popup__input"
                   type="text"
+                  placeholder="Description"
                   required
                   name="descriptionInput"
                   id="inputDesc"
@@ -83,24 +80,70 @@
               </fieldset>
             </form>
           </div>
+          <div class="popup__container" id="addPopup">
+            <form class="popup__form" name="editForm" id="addForm">
+              <fieldset class="popup__fieldset">
+                <button type="button" class="popup__button" aria-label="Close">
+                  <img
+                    class="popup__close"
+                    alt="Close button image"
+                    src="./images/close-icon.svg"
+                    id="closeAdd"
+                  />
+                </button>
+                <h2 class="popup__header">New Place</h2>
+                <input
+                  class="popup__input"
+                  type="text"
+                  placeholder="Title"
+                  required
+                  name="title"
+                  id="inputTitle"
+                />
+                <input
+                  class="popup__input"
+                  type="text"
+                  placeholder="Image link"
+                  required
+                  name="imageLink"
+                  id="inputLink"
+                />
+                <button
+                  class="popup__save"
+                  type="submit"
+                  id="save"
+                  aria-label="Save"
+                >
+                  Save
+                </button>
+              </fieldset>
+            </form>
+          </div>
+          <div class="popup__container" id="imagePopup">
+            <div class="popup__photo">
+              <img src=" " alt="" class="popup__image" />
+              <button type="button" class="popup__button" aria-label="Close">
+                <img
+                  class="popup__close"
+                  alt="Close button image"
+                  src="./images/close-icon.svg"
+                  id="closeImage"
+                />
+              </button>
+              <h2 class="popup__title"></h2>
+            </div>
+          </div>
         </section>
         <section class="cards">
           <template id="card">
             <article class="card">
-              <img class="card__image" alt="" src=" " />
+              <img class="card__image" alt="" src="" />
               <h2 class="card__title"></h2>
               <button
                 class="card__like"
                 aria-label="Like"
                 type="Button"
-                id="like"
-              >
-                <img
-                  alt="A heart-shaped like button to show your appreciation"
-                  src="./images/like.svg"
-                  id="likeImage"
-                />
-              </button>
+              ></button>
               <button
                 class="card__trash"
                 aria-label="Trash"
