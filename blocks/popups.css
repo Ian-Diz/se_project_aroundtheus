@@ -50,6 +50,8 @@
   background-color: rgba(0, 0, 0, 0);
   border: none;
   padding: 0;
+  align-self: flex-end;
+  display: flex;
 }
 
 .popup__close:hover {
@@ -149,8 +151,8 @@
   }
 
   .popup_close_mobile {
-    top: -26px;
-    right: -26px;
+    top: -29px;
+    right: -29px;
   }
 
   .popup__header {

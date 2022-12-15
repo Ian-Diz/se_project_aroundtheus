@@ -82,7 +82,7 @@ function openPopup(popup) {
 }
 
 function closePopup() {
-  let activePopup = popups.querySelector(".popup_opened");
+  const activePopup = popups.querySelector(".popup_opened");
   activePopup.classList.remove("popup_opened");
 }
 
@@ -94,7 +94,6 @@ function openEdit() {
 
 function openAdd() {
   openPopup(addPopup);
-  addForm.reset();
 }
 
 function saveEdit(event) {
@@ -106,13 +105,13 @@ function saveEdit(event) {
 
 function saveAdd(event) {
   event.preventDefault();
-  let currentCard = initialCards;
-  let index = currentCard.push({
+  const newCard = {
     name: popupTitle.value,
     link: popupLink.value,
-  });
-  cards.prepend(getCardElement(currentCard[index - 1]));
+  };
+  cards.prepend(getCardElement(newCard));
   closePopup(addPopup);
+  addForm.reset();
 }
 
 editForm.addEventListener("submit", saveEdit);
@@ -124,14 +123,14 @@ closeAddButton.addEventListener("click", closePopup);
 closeImageButton.addEventListener("click", closePopup);
 
 function getCardElement(data) {
-  let cardElement = cards.querySelector("#card").content.cloneNode(true);
-  let cardImage = cardElement.querySelector(".card__image");
-  let cardTitle = cardElement.querySelector(".card__title");
-  let card = cardElement.querySelector(".card");
+  const cardElement = cards.querySelector("#card").content.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+  const card = cardElement.querySelector(".card");
 
-  let deleteButton = cardElement.querySelector(".card__trash");
+  const deleteButton = cardElement.querySelector(".card__trash");
 
-  let likeButton = cardElement.querySelector(".card__like");
+  const likeButton = cardElement.querySelector(".card__like");
 
   function deleteActivate() {
     card.remove();
@@ -142,10 +141,11 @@ function getCardElement(data) {
   }
 
   function openImage() {
-    imagePopup.classList.add("popup_opened");
+    openPopup(imagePopup);
     closeImageButton.classList.add("popup_close_mobile");
     popupImageTitle.textContent = cardTitle.textContent;
     popupImage.src = data.link;
+    popupImage.alt = `An image of ${data.name}.`;
   }
 
   cardImage.addEventListener("click", openImage);
@@ -159,6 +159,6 @@ function getCardElement(data) {
 }
 
 initialCards.forEach(function (item) {
-  let cardElement = getCardElement(item);
+  const cardElement = getCardElement(item);
   cards.append(cardElement);
 });
