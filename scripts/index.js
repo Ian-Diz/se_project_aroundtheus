@@ -37,7 +37,7 @@ const editButton = profile.querySelector(".profile__edit");
 
 const addButton = profile.querySelector(".profile__add");
 
-const popups = main.querySelector(".popups");
+const popups = main.querySelector(".popup");
 
 const editPopup = popups.querySelector("#editPopup");
 
