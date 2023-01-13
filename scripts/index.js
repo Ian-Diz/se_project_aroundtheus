@@ -39,6 +39,10 @@ const addButton = profile.querySelector(".profile__add");
 
 const popups = main.querySelector(".popup");
 
+const popupOpened = popups.querySelector(".popup_opened");
+
+const popupContainer = main.querySelector(".popup__container");
+
 const editPopup = popups.querySelector("#editPopup");
 
 const addPopup = popups.querySelector("#addPopup");
@@ -77,8 +81,11 @@ const cards = main.querySelector(".cards");
 
 const card = cards.querySelectorAll(".card");
 
+//const popupContainers = popups.querySelectorAll(".popup_container");
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  enableValidation();
 }
 
 function closePopup() {
@@ -90,10 +97,20 @@ function openEdit() {
   openPopup(editPopup);
   popupName.value = profileTitle.textContent;
   popupDesc.value = profileSubtitle.textContent;
+  editPopup.addEventListener("click", function (evt) {
+    if (!evt.target.closest(".popup__form")) {
+      closePopup();
+    }
+  });
 }
 
 function openAdd() {
   openPopup(addPopup);
+  addPopup.addEventListener("click", function (evt) {
+    if (!evt.target.closest(".popup__form")) {
+      closePopup();
+    }
+  });
 }
 
 function saveEdit(event) {
@@ -115,12 +132,24 @@ function saveAdd(event) {
 }
 
 editForm.addEventListener("submit", saveEdit);
+
 addForm.addEventListener("submit", saveAdd);
+
 editButton.addEventListener("click", openEdit);
+
 addButton.addEventListener("click", openAdd);
+
 closeEditButton.addEventListener("click", closePopup);
+
 closeAddButton.addEventListener("click", closePopup);
+
 closeImageButton.addEventListener("click", closePopup);
+
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    closePopup();
+  }
+});
 
 function getCardElement(data) {
   const cardElement = cards.querySelector("#card").content.cloneNode(true);
@@ -146,6 +175,11 @@ function getCardElement(data) {
     popupImageTitle.textContent = cardTitle.textContent;
     popupImage.src = data.link;
     popupImage.alt = `An image of ${data.name}.`;
+    imagePopup.addEventListener("click", function (evt) {
+      if (!evt.target.closest(".popup__photo")) {
+        closePopup();
+      }
+    });
   }
 
   cardImage.addEventListener("click", openImage);
