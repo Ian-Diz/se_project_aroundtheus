@@ -33,13 +33,11 @@ const main = document.querySelector(".main");
 
 const profile = main.querySelector(".profile");
 
-const editButton = profile.querySelector(".profile__edit");
+const editProfileButton = profile.querySelector(".profile__edit");
 
-const addButton = profile.querySelector(".profile__add");
+const addCardButton = profile.querySelector(".profile__add");
 
 const popups = main.querySelector(".popup");
-
-const popupOpened = popups.querySelector(".popup_opened");
 
 const popupContainer = main.querySelector(".popup__container");
 
@@ -49,9 +47,9 @@ const addPopup = popups.querySelector("#addPopup");
 
 const imagePopup = popups.querySelector("#imagePopup");
 
-const closeEditButton = popups.querySelector("#closeEdit");
+const closeEditProfileButton = popups.querySelector("#closeEdit");
 
-const closeAddButton = popups.querySelector("#closeAdd");
+const closeAddCardButton = popups.querySelector("#closeAdd");
 
 const closeImageButton = popups.querySelector("#closeImage");
 
@@ -75,42 +73,58 @@ const popupImageTitle = imagePopup.querySelector(".popup__title");
 
 const popupImage = imagePopup.querySelector(".popup__image");
 
-const saveButton = popups.querySelector(".popup__save");
+const addSaveButton = popups.querySelector("#addSave");
+
+const editSaveButton = popups.querySelector("#editSave");
 
 const cards = main.querySelector(".cards");
 
 const card = cards.querySelectorAll(".card");
 
-//const popupContainers = popups.querySelectorAll(".popup_container");
+const addPopupInputList = Array.from(addForm.querySelectorAll(".popup__input"));
+
+const editPopupInputList = Array.from(
+  editForm.querySelectorAll(".popup__input")
+);
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  enableValidation();
+  popup.addEventListener("mousedown", clickClosePopup);
+  document.addEventListener("keydown", escapeClosePopup);
 }
 
 function closePopup() {
   const activePopup = popups.querySelector(".popup_opened");
   activePopup.classList.remove("popup_opened");
+  activePopup.removeEventListener("mousedown", clickClosePopup);
+  document.addEventListener("keydown", escapeClosePopup);
+}
+
+function clickClosePopup(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
+
+function escapeClosePopup(evt) {
+  if (evt.key === "Escape") {
+    closePopup();
+  }
+}
+
+function resetEdit() {
+  popupName.value = profileTitle.textContent;
+  popupDesc.value = profileSubtitle.textContent;
+  toggleButtonState(editPopupInputList, editSaveButton, config);
 }
 
 function openEdit() {
   openPopup(editPopup);
-  popupName.value = profileTitle.textContent;
-  popupDesc.value = profileSubtitle.textContent;
-  editPopup.addEventListener("click", function (evt) {
-    if (!evt.target.closest(".popup__form")) {
-      closePopup();
-    }
-  });
+  resetEdit();
 }
 
 function openAdd() {
   openPopup(addPopup);
-  addPopup.addEventListener("click", function (evt) {
-    if (!evt.target.closest(".popup__form")) {
-      closePopup();
-    }
-  });
 }
 
 function saveEdit(event) {
@@ -129,27 +143,22 @@ function saveAdd(event) {
   cards.prepend(getCardElement(newCard));
   closePopup(addPopup);
   addForm.reset();
+  toggleButtonState(addPopupInputList, addSaveButton, config);
 }
 
 editForm.addEventListener("submit", saveEdit);
 
 addForm.addEventListener("submit", saveAdd);
 
-editButton.addEventListener("click", openEdit);
+editProfileButton.addEventListener("click", openEdit);
 
-addButton.addEventListener("click", openAdd);
+addCardButton.addEventListener("click", openAdd);
 
-closeEditButton.addEventListener("click", closePopup);
+closeEditProfileButton.addEventListener("click", closePopup);
 
-closeAddButton.addEventListener("click", closePopup);
+closeAddCardButton.addEventListener("click", closePopup);
 
 closeImageButton.addEventListener("click", closePopup);
-
-document.addEventListener("keydown", function (evt) {
-  if (evt.key === "Escape") {
-    closePopup();
-  }
-});
 
 function getCardElement(data) {
   const cardElement = cards.querySelector("#card").content.cloneNode(true);
@@ -175,11 +184,6 @@ function getCardElement(data) {
     popupImageTitle.textContent = cardTitle.textContent;
     popupImage.src = data.link;
     popupImage.alt = `An image of ${data.name}.`;
-    imagePopup.addEventListener("click", function (evt) {
-      if (!evt.target.closest(".popup__photo")) {
-        closePopup();
-      }
-    });
   }
 
   cardImage.addEventListener("click", openImage);

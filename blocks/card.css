@@ -67,3 +67,12 @@
   transition-duration: 0.3s;
   cursor: pointer;
 }
+
+/*Added this new rule to fix an issue of the hover state being applied
+and not getting removed when clicking the like button on mobile.*/
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .card__like:hover {
+    opacity: 1;
+  }
+}
