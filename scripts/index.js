@@ -97,7 +97,7 @@ function closePopup() {
   const activePopup = popups.querySelector(".popup_opened");
   activePopup.classList.remove("popup_opened");
   activePopup.removeEventListener("mousedown", clickClosePopup);
-  document.addEventListener("keydown", escapeClosePopup);
+  document.removeEventListener("keydown", escapeClosePopup);
 }
 
 function clickClosePopup(evt) {
