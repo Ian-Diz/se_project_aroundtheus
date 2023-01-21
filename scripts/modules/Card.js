@@ -1,36 +1,5 @@
 import { openPopup, closePopup } from "./utils.js";
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
 const main = document.querySelector(".main");
 
 const popups = main.querySelector(".popup");
@@ -61,8 +30,12 @@ class Card {
     this._element = this._getTemplate();
     this._setEventHandlers();
 
-    this._element.querySelector(".card__image").src = this._image;
-    this._element.querySelector(".card__title").textContent = this._title;
+    const cardImage = this._element.querySelector(".card__image");
+    const cardTitle = this._element.querySelector(".card__title");
+
+    cardImage.src = this._image;
+    cardImage.alt = `Photo of ${this._title}`;
+    cardTitle.textContent = this._title;
 
     return this._element;
   }
@@ -107,4 +80,4 @@ class Card {
   }
 }
 
-export { Card, initialCards };
+export { Card };
