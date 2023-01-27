@@ -87,6 +87,7 @@ const config = {
 
 const editValidator = new FormValidator(config, editForm);
 const addValidator = new FormValidator(config, addForm);
+const popupImageClass = new PopupWithImage(popupImage);
 
 function resetEdit() {
   popupName.value = profileTitle.textContent;
@@ -121,9 +122,7 @@ function saveAdd(event) {
 }
 
 function createCard(item) {
-  const card = new Card(item, "#card", () => {
-    const popupImageClass = new PopupWithImage(popupImage);
-  });
+  const card = new Card(item, "#card", popupImageClass.);
   const cardElement = card.generateCard();
   return cardElement;
 }
