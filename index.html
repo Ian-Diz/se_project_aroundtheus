@@ -15,19 +15,23 @@
       content="United States, pictures, picture wall, images, landscape"
     />
     <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="logo" src="./images/logo.svg" alt="Around the US Logo" />
+        <img
+          class="logo"
+          src="<%= require('./images/logo.svg')%>"
+          alt="Around the US Logo"
+        />
       </header>
       <main class="main">
         <section class="profile">
           <img
             class="profile__image"
             alt="An image of Jacues Cousteau"
-            src="./images/jacques-cousteaujacques_profile.svg"
+            src="<%= require('./images/jacques-cousteaujacques_profile.svg')%>"
           />
           <div class="profile__layout">
             <h1 class="profile__title">Jacques Cousteau</h1>
@@ -44,11 +48,16 @@
           <div class="popup__container" id="editPopup">
             <form class="popup__form" name="addForm" id="editForm">
               <fieldset class="popup__fieldset">
-                <button type="button" class="popup__button" aria-label="Close">
+                <button
+                  type="button"
+                  class="popup__button"
+                  aria-label="Close"
+                  id="editForm-close"
+                >
                   <img
                     class="popup__close"
                     alt="Close button image"
-                    src="./images/close-icon.svg"
+                    src="<%= require('./images/close-icon.svg')%>"
                     id="closeEdit"
                   />
                 </button>
@@ -93,8 +102,8 @@
                   <img
                     class="popup__close"
                     alt="Close button image"
-                    src="./images/close-icon.svg"
-                    id="closeAdd"
+                    src="<%= require('./images/close-icon.svg')%>"
+                    id="addForm-close"
                   />
                 </button>
                 <h2 class="popup__header">New Place</h2>
@@ -136,8 +145,8 @@
                 <img
                   class="popup__close"
                   alt="Close button image"
-                  src="./images/close-icon.svg"
-                  id="closeImage"
+                  src="<%= require('./images/close-icon.svg')%>"
+                  id="imagePopup-close"
                 />
               </button>
               <h2 class="popup__title"></h2>
@@ -162,7 +171,7 @@
               >
                 <img
                   alt="A trash icon to delete the card"
-                  src="./images/Trash.svg"
+                  src="<%= require('./images/Trash.svg')%>"
                 />
               </button>
             </article>
@@ -173,6 +182,5 @@
         <p class="footer__title">© 2022 Around The U.S.</p>
       </footer>
     </div>
-    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

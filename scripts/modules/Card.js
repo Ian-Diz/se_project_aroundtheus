@@ -1,19 +1,5 @@
-import { openPopup, closePopup } from "./utils.js";
-
-const main = document.querySelector(".main");
-
-const popups = main.querySelector(".popup");
-
-const imagePopup = popups.querySelector("#imagePopup");
-
-const popupImageTitle = imagePopup.querySelector(".popup__title");
-
-const closeImageButton = popups.querySelector("#closeImage");
-
-const popupImage = popups.querySelector(".popup__image");
-
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleImagePopup) {
     this._title = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
@@ -40,7 +26,7 @@ class Card {
     return this._element;
   }
 
-  _handleOpenPopup() {
+  /*_handleOpenPopup() {
     openPopup(imagePopup);
     closeImageButton.classList.add("popup_close_mobile");
     popupImageTitle.textContent = this._title;
@@ -51,7 +37,7 @@ class Card {
   _handleClosePopup() {
     closePopup();
     closeImageButton.classList.remove("popup_close_mobile");
-  }
+  }*/
 
   _handleLikeButton(evt) {
     evt.target.closest(".card__like").classList.toggle("card_like_activate");
@@ -65,7 +51,7 @@ class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleOpenPopup();
+        this.handleImagePopup;
       });
     this._element
       .querySelector(".card__like")

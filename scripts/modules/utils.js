@@ -1,6 +1,6 @@
 import { popups } from "../index.js";
 
-function openPopup(popup) {
+/*function openPopup(popup) {
   popup.classList.add("popup_opened");
   popup.addEventListener("mousedown", clickClosePopup);
   document.addEventListener("keydown", escapeClosePopup);
@@ -25,4 +25,4 @@ function escapeClosePopup(evt) {
   }
 }
 
-export { openPopup, closePopup };
+export { openPopup, closePopup };*/

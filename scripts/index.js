@@ -1,8 +1,9 @@
 import { FormValidator } from "./modules/FormValidator.js";
 
-import { closePopup, openPopup } from "./modules/utils.js";
-
 import { Card } from "./modules/Card.js";
+
+import "../pages/index.css";
+import PopupWithImage from "./modules/PopupWithImage.js";
 
 const initialCards = [
   {
@@ -39,6 +40,14 @@ const main = document.querySelector(".main");
 
 const popups = main.querySelector(".popup");
 
+const imagePopup = popups.querySelector("#imagePopup");
+
+const popupImageTitle = imagePopup.querySelector(".popup__title");
+
+const closeImageButton = popups.querySelector("#closeImage");
+
+const popupImage = popups.querySelector(".popup__image");
+
 const editForm = popups.querySelector("#editForm");
 
 const addForm = popups.querySelector("#addForm");
@@ -54,12 +63,6 @@ const addCardButton = profile.querySelector(".profile__add");
 const editPopup = popups.querySelector("#editPopup");
 
 const addPopup = popups.querySelector("#addPopup");
-
-const closeEditProfileButton = popups.querySelector("#closeEdit");
-
-const closeAddCardButton = popups.querySelector("#closeAdd");
-
-const closeImageButton = popups.querySelector("#closeImage");
 
 const popupName = popups.querySelector("#inputName");
 
@@ -118,24 +121,20 @@ function saveAdd(event) {
 }
 
 function createCard(item) {
-  const card = new Card(item, "#card");
+  const card = new Card(item, "#card", () => {
+    const popupImageClass = new PopupWithImage(popupImage);
+  });
   const cardElement = card.generateCard();
   return cardElement;
 }
 
-editForm.addEventListener("submit", saveEdit);
+//editForm.addEventListener("submit", saveEdit);
 
-addForm.addEventListener("submit", saveAdd);
+//addForm.addEventListener("submit", saveAdd);
 
 editProfileButton.addEventListener("click", openEdit);
 
 addCardButton.addEventListener("click", openAdd);
-
-closeEditProfileButton.addEventListener("click", closePopup);
-
-closeAddCardButton.addEventListener("click", closePopup);
-
-closeImageButton.addEventListener("click", closePopup);
 
 initialCards.forEach((item) => {
   cards.append(createCard(item));
@@ -144,4 +143,12 @@ initialCards.forEach((item) => {
 editValidator.enableValidation();
 addValidator.enableValidation();
 
-export { editValidator, addValidator, cards, popups };
+export {
+  editValidator,
+  addValidator,
+  cards,
+  popups,
+  popupImage,
+  popupImageTitle,
+  closeImageButton,
+};
