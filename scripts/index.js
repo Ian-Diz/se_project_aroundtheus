@@ -122,7 +122,7 @@ function saveAdd(event) {
 }
 
 function createCard(item) {
-  const card = new Card(item, "#card", popupImageClass.);
+  const card = new Card(item, "#card");
   const cardElement = card.generateCard();
   return cardElement;
 }
