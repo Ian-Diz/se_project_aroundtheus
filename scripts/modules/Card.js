@@ -1,8 +1,9 @@
 class Card {
-  constructor(data, templateSelector, handleImagePopup) {
+  constructor({ data, handleImageClick }, templateSelector) {
     this._title = data.name;
     this._image = data.link;
     this._templateSelector = templateSelector;
+    this._handleImageClick = handleImageClick;
   }
 
   _getTemplate() {
@@ -51,7 +52,7 @@ class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this.handleImagePopup;
+        this._handleImageClick({ title: this._title, image: this._image });
       });
     this._element
       .querySelector(".card__like")

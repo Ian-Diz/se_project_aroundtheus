@@ -1,4 +1,4 @@
-import { popups } from "../index.js";
+import { popups, imagePopup, closeIma } from "../index.js";
 
 export default class Popup {
   constructor(popupSelector) {
@@ -8,30 +8,60 @@ export default class Popup {
   open() {
     this._popupSelector.classList.add("popup_opened");
     this.setEventListeners();
+    console.log(this);
   }
 
-  close() {
-    const activePopup = this._popupSelector.querySelector(".popup_opened");
+  closePopup() {
+    /*this._popupSelector.removeEventListener(
+      "mousedown",
+      this._handleClickClose
+    );
+    document.removeEventListener("keydown", this._handleEscClose);*/
+    const activePopup = popups.querySelector(".popup_opened");
     activePopup.classList.remove("popup_opened");
-    activePopup.removeEventListener("mousedown", clickClosePopup);
-    document.removeEventListener("keydown", escapeClosePopup);
   }
 
-  _handleEscClose() {
+  /*_handleClickClose(evt) {
+    if (evt.target === evt.currentTarget) {
+      const activePopup = popups.querySelector(".popup_opened");
+      activePopup.classList.remove("popup_opened");
+    }
+  }*/
+
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
-      this.close();
+      const activePopup = popups.querySelector(".popup_opened");
+      activePopup.classList.remove("popup_opened");
     }
   }
 
+  /*_handleEscClose(evt) {
+    const close = this.closePopup;
+    if (evt.key === "Escape") {
+      close();
+    }
+  }*/
+
   setEventListeners() {
-    popups
-      .querySelector(`#${this._popupSelector.id}-close`)
-      .addEventListener("click", this.close);
-    this._popupSelector.addEventListener("mousedown", () => {
+    const popupClose = popups.querySelector(`#${this._popupSelector.id}-close`);
+    popupClose.addEventListener("click", this.closePopup);
+    this._popupSelector.addEventListener("mousedown", (evt) => {
+      const close = this.closePopup;
       if (evt.target === evt.currentTarget) {
-        this.close(evt.target);
+        close();
       }
     });
+
+    this._popupSelector.addEventListener("mousedown", this._handleClickClose);
+
     document.addEventListener("keydown", this._handleEscClose);
+
+    /*document.addEventListener("keydown", (evt) => {
+      const close = this.closePopup;
+      console.log(this.closePopup);
+      if (evt.key === "Escape") {
+        close();
+      }
+    });*/
   }
 }

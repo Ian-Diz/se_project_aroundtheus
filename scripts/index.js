@@ -3,7 +3,11 @@ import { FormValidator } from "./modules/FormValidator.js";
 import { Card } from "./modules/Card.js";
 
 import "../pages/index.css";
+
 import PopupWithImage from "./modules/PopupWithImage.js";
+
+import Section from "./modules/Section.js";
+import PopupWithForm from "./modules/PopupWithForm.js";
 
 const initialCards = [
   {
@@ -40,7 +44,7 @@ const main = document.querySelector(".main");
 
 const popups = main.querySelector(".popup");
 
-const imagePopup = popups.querySelector("#imagePopup");
+export const imagePopup = popups.querySelector("#imagePopup");
 
 const popupImageTitle = imagePopup.querySelector(".popup__title");
 
@@ -48,9 +52,9 @@ const closeImageButton = popups.querySelector("#closeImage");
 
 const popupImage = popups.querySelector(".popup__image");
 
-const editForm = popups.querySelector("#editForm");
+export const editForm = popups.querySelector("#editForm");
 
-const addForm = popups.querySelector("#addForm");
+export const addForm = popups.querySelector("#addForm");
 
 const cards = main.querySelector(".cards");
 
@@ -64,17 +68,17 @@ const editPopup = popups.querySelector("#editPopup");
 
 const addPopup = popups.querySelector("#addPopup");
 
-const popupName = popups.querySelector("#inputName");
+export const popupName = popups.querySelector("#inputName");
 
-const popupDesc = popups.querySelector("#inputDesc");
+export const popupDesc = popups.querySelector("#inputDesc");
 
-const profileTitle = profile.querySelector(".profile__title");
+export const profileTitle = profile.querySelector(".profile__title");
 
-const profileSubtitle = profile.querySelector(".profile__subtitle");
+export const profileSubtitle = profile.querySelector(".profile__subtitle");
 
-const popupTitle = addForm.querySelector("#inputTitle");
+export const popupTitle = addForm.querySelector("#inputTitle");
 
-const popupLink = addForm.querySelector("#inputLink");
+export const popupLink = addForm.querySelector("#inputLink");
 
 const config = {
   formSelector: ".popup__form",
@@ -85,15 +89,17 @@ const config = {
   errorClass: "popup__input-error_active",
 };
 
-const editValidator = new FormValidator(config, editForm);
-const addValidator = new FormValidator(config, addForm);
-const popupImageClass = new PopupWithImage(popupImage);
+const EditValidator = new FormValidator(config, editForm);
+const AddValidator = new FormValidator(config, addForm);
+const CardPreview = new PopupWithImage(imagePopup);
+const EditForm = new PopupWithForm(editPopup);
+const AddForm = new PopupWithForm(addPopup);
 
 function resetEdit() {
   popupName.value = profileTitle.textContent;
   popupDesc.value = profileSubtitle.textContent;
-  editValidator.toggleButtonState();
-  editValidator.resetValidation();
+  EditValidator.toggleButtonState();
+  EditValidator.resetValidation();
 }
 
 function openEdit() {
@@ -103,7 +109,7 @@ function openEdit() {
 
 function openAdd() {
   openPopup(addPopup);
-  addValidator.toggleButtonState();
+  AddValidator.toggleButtonState();
 }
 
 function saveEdit(event) {
@@ -116,35 +122,52 @@ function saveEdit(event) {
 function saveAdd(event) {
   event.preventDefault();
   const item = { name: popupTitle.value, link: popupLink.value };
-  cards.prepend(createCard(item));
+  CardSection.addItem(item);
   closePopup(addPopup);
   addForm.reset();
 }
 
-function createCard(item) {
-  const card = new Card(item, "#card");
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-//editForm.addEventListener("submit", saveEdit);
-
-//addForm.addEventListener("submit", saveAdd);
-
-editProfileButton.addEventListener("click", openEdit);
-
-addCardButton.addEventListener("click", openAdd);
-
-initialCards.forEach((item) => {
-  cards.append(createCard(item));
+editProfileButton.addEventListener("click", () => {
+  EditForm.open();
 });
 
-editValidator.enableValidation();
-addValidator.enableValidation();
+addCardButton.addEventListener("click", () => {
+  AddForm.open();
+});
+
+const CardSection = new Section(
+  {
+    initialCards,
+    renderer: (data) => {
+      const card = new Card(
+        {
+          data,
+          handleImageClick: (imageData) => {
+            CardPreview.open(imageData);
+          },
+        },
+        "#card"
+      );
+      const cardElement = card.generateCard();
+      return cardElement;
+    },
+  },
+  cards
+);
+
+CardSection.renderItems(initialCards);
+
+CardPreview.setEventListeners();
+
+//CardSection.addItem(AddForm.item);
+
+EditValidator.enableValidation();
+
+AddValidator.enableValidation();
 
 export {
-  editValidator,
-  addValidator,
+  EditValidator,
+  AddValidator,
   cards,
   popups,
   popupImage,

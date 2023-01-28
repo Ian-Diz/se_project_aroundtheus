@@ -14,8 +14,11 @@
       name="keywords"
       content="United States, pictures, picture wall, images, landscape"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
-    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="<%= require('./favicon.ico')%>"
+    />
   </head>
   <body class="body">
     <div class="page">
@@ -48,17 +51,12 @@
           <div class="popup__container" id="editPopup">
             <form class="popup__form" name="addForm" id="editForm">
               <fieldset class="popup__fieldset">
-                <button
-                  type="button"
-                  class="popup__button"
-                  aria-label="Close"
-                  id="editForm-close"
-                >
+                <button type="button" class="popup__button" aria-label="Close">
                   <img
                     class="popup__close"
                     alt="Close button image"
                     src="<%= require('./images/close-icon.svg')%>"
-                    id="closeEdit"
+                    id="editPopup-close"
                   />
                 </button>
                 <h2 class="popup__header">Edit Profile</h2>
@@ -103,7 +101,7 @@
                     class="popup__close"
                     alt="Close button image"
                     src="<%= require('./images/close-icon.svg')%>"
-                    id="addForm-close"
+                    id="addPopup-close"
                   />
                 </button>
                 <h2 class="popup__header">New Place</h2>
