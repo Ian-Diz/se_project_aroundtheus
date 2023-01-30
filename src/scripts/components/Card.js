@@ -27,19 +27,6 @@ class Card {
     return this._element;
   }
 
-  /*_handleOpenPopup() {
-    openPopup(imagePopup);
-    closeImageButton.classList.add("popup_close_mobile");
-    popupImageTitle.textContent = this._title;
-    popupImage.src = this._image;
-    popupImage.alt = `An image of ${this._title}.`;
-  }
-
-  _handleClosePopup() {
-    closePopup();
-    closeImageButton.classList.remove("popup_close_mobile");
-  }*/
-
   _handleLikeButton(evt) {
     evt.target.closest(".card__like").classList.toggle("card_like_activate");
   }
