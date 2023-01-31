@@ -17,18 +17,18 @@ class Card {
     this._element = this._getTemplate();
     this._setEventHandlers();
 
-    const cardImage = this._element.querySelector(".card__image");
-    const cardTitle = this._element.querySelector(".card__title");
+    this._cardImage = this._element.querySelector(".card__image");
+    this._cardTitle = this._element.querySelector(".card__title");
 
-    cardImage.src = this._image;
-    cardImage.alt = `Photo of ${this._title}`;
-    cardTitle.textContent = this._title;
+    this._cardImage.src = this._image;
+    this._cardImage.alt = `Photo of ${this._title}`;
+    this._cardTitle.textContent = this._title;
 
     return this._element;
   }
 
   _handleLikeButton(evt) {
-    evt.target.closest(".card__like").classList.toggle("card_like_activate");
+    evt.target.classList.toggle("card_like_activate");
   }
 
   _handleDeleteButton(evt) {
@@ -41,11 +41,13 @@ class Card {
       .addEventListener("click", () => {
         this._handleImageClick({ title: this._title, image: this._image });
       });
+
     this._element
       .querySelector(".card__like")
       .addEventListener("click", (evt) => {
         this._handleLikeButton(evt);
       });
+
     this._element
       .querySelector(".card__trash")
       .addEventListener("click", (evt) => {

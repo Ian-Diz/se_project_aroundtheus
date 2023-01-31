@@ -5,12 +5,12 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    const info = { name: this._name, job: this._job };
+    const info = { name: this._name.textContent, job: this._job.textContent };
     return info;
   }
 
   setUserInfo(data) {
-    this._name.textContent = data.first;
-    this._job.textContent = data.second;
+    this._name.textContent = data.nameInput;
+    this._job.textContent = data.descriptionInput;
   }
 }
