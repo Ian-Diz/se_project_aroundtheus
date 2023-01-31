@@ -45,7 +45,7 @@ editPopupForm.setEventListeners();
 
 const addPopupForm = new PopupWithForm(addPopup, (inputValues) => {
   const data = { name: inputValues.title, link: inputValues.imageLink };
-  CardSection.addItem(data);
+  cardSection.addItem(data);
 });
 
 addPopupForm.setEventListeners();
@@ -64,7 +64,7 @@ addCardButton.addEventListener("click", () => {
   addValidator.toggleButtonState();
 });
 
-const CardSection = new Section(
+const cardSection = new Section(
   {
     initialCards,
     renderer: (data) => {
@@ -84,7 +84,7 @@ const CardSection = new Section(
   cards
 );
 
-CardSection.renderItems(initialCards);
+cardSection.renderItems(initialCards);
 
 cardPreview.setEventListeners();
 
