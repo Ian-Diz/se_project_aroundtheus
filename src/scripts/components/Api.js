@@ -1,6 +1,7 @@
-export class Api {
-  constructor(options) {
-    this._options = options;
+export default class Api {
+  constructor(config) {
+    this._baseUrl = config.baseUrl;
+    this._headers = config.headers;
   }
 
   _promiseThing(userArray, cardList) {
@@ -10,11 +11,8 @@ export class Api {
   getInitialCards() {}
 
   getUserInfo = () => {
-    fetch("https://around.nomoreparties.co/v1/group-12/users/me", {
-      headers: {
-        authorization: "3e3670e4-89e4-4b74-ac18-c98464206840",
-        "Content-Type": "application/json",
-      },
+    fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
     })
       .then((res) => {
         console.log(res.ok);
@@ -31,11 +29,3 @@ export class Api {
 
   setUserInfo() {}
 }
-
-export const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-12",
-  headers: {
-    authorization: "3e3670e4-89e4-4b74-ac18-c98464206840",
-    "Content-Type": "application/json",
-  },
-});

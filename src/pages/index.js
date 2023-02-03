@@ -12,7 +12,7 @@ import Section from "../scripts/components/Section.js";
 
 import UserInfo from "../scripts/components/UserInfo.js";
 
-import { api } from "../scripts/components/Api.js";
+import Api from "../scripts/components/Api.js";
 
 import {
   initialCards,
@@ -36,9 +36,20 @@ const addValidator = new FormValidator(config, addForm);
 
 const cardPreview = new PopupWithImage("#imagePopup");
 
-const user = new UserInfo(api.getUserInfo());
+export const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "3e3670e4-89e4-4b74-ac18-c98464206840",
+    "Content-Type": "application/json",
+  },
+});
 
-console.log(api.getUserInfo());
+api.getUserInfo();
+
+const user = new UserInfo({
+  name: api.getUserInfo.name,
+  job: api.getUserInfo.about,
+});
 
 /*const user = new UserInfo({
   name: profileTitle,
