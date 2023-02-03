@@ -12,6 +12,8 @@ import Section from "../scripts/components/Section.js";
 
 import UserInfo from "../scripts/components/UserInfo.js";
 
+import { api } from "../scripts/components/Api.js";
+
 import {
   initialCards,
   editForm,
@@ -29,12 +31,19 @@ import {
 } from "../scripts/utils/constants";
 
 const editValidator = new FormValidator(config, editForm);
+
 const addValidator = new FormValidator(config, addForm);
+
 const cardPreview = new PopupWithImage("#imagePopup");
-const user = new UserInfo({
+
+const user = new UserInfo(api.getUserInfo());
+
+console.log(api.getUserInfo());
+
+/*const user = new UserInfo({
   name: profileTitle,
   job: profileSubtitle,
-});
+});*/
 
 const editPopupForm = new PopupWithForm(editPopup, (inputValues) => {
   console.log(inputValues);

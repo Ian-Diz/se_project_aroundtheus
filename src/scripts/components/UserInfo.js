@@ -1,4 +1,4 @@
-export default class UserInfo {
+/*export default class UserInfo {
   constructor({ name, job }) {
     this._name = name;
     this._job = job;
@@ -13,4 +13,17 @@ export default class UserInfo {
     this._name.textContent = data.nameInput;
     this._job.textContent = data.descriptionInput;
   }
+}*/
+
+export default class UserInfo {
+  constructor(apiInfo) {
+    this._apiInfo = apiInfo;
+  }
+
+  getUserInfo() {
+    const userInfo = { name: this._apiInfo.name, job: this._apiInfo.about };
+    return userInfo;
+  }
+
+  setUserInfo(apiCall) {}
 }
