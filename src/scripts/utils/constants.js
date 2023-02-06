@@ -1,34 +1,3 @@
-export const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
-  },
-
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
-  },
-
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
-  },
-
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
-  },
-
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg",
-  },
-];
-
 export const main = document.querySelector(".main");
 
 export const popups = main.querySelector(".popup");
@@ -48,6 +17,10 @@ export const addCardButton = profile.querySelector(".profile__add");
 export const editPopup = "#editPopup";
 
 export const addPopup = "#addPopup";
+
+export const certaintyPopup = "#certaintyPopup";
+
+export const confirmButton = popups.querySelector(".popup__confirm");
 
 export const popupName = popups.querySelector("#inputName");
 

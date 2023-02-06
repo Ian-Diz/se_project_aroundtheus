@@ -17,9 +17,18 @@ export default class PopupWithForm extends Popup {
     return this._formValues;
   }
 
+  open = (prefilled) => {
+    if (prefilled) {
+      this._inputList.forEach((input) => {
+        input.value = "Loading...";
+      });
+    }
+    super.open();
+  };
+
   close = () => {
-    this._form.reset();
     super.close();
+    this._form.reset();
   };
 
   setEventListeners() {

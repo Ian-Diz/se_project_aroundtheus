@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 241px 41px;
   grid-template-rows: 282px 29px;
-  gap: 25px 0;
+  gap: 22px 0;
   padding-bottom: 25px;
 }
 
@@ -36,11 +36,19 @@
 .card__like {
   grid-column: 2/2;
   grid-row: 2/2;
-  margin: 6px 20px 0 0;
+  margin: 0 20px 0 0;
+  padding: 0;
   border: none;
   background-color: #ffffff;
   background-image: url(../images/like.svg);
   background-repeat: no-repeat;
+}
+
+.card__like-number {
+  font-size: 13px;
+  line-height: 16px;
+  margin: 21px 1px 0 0;
+  padding: 0;
 }
 
 .card_like_activate {
@@ -60,6 +68,11 @@
   height: 14px;
   background-color: rgba(0, 0, 0, 0);
   border: none;
+  visibility: hidden;
+}
+
+.card__trash_opened {
+  visibility: visible;
 }
 
 .card__trash:hover {

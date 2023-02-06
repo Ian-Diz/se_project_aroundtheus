@@ -37,8 +37,8 @@
             src="<%= require('./images/jacques-cousteaujacques_profile.svg')%>"
           />
           <div class="profile__layout">
-            <h1 class="profile__title">Jacques Cousteau</h1>
-            <p class="profile__subtitle">Explorer</p>
+            <h1 class="profile__title">Loading...</h1>
+            <p class="profile__subtitle">Loading...</p>
             <button
               type="button"
               class="profile__edit"
@@ -65,7 +65,7 @@
                   type="text"
                   placeholder="Name"
                   required
-                  name="nameInput"
+                  name="name"
                   id="inputName"
                   minlength="2"
                   maxlength="40"
@@ -76,7 +76,7 @@
                   type="text"
                   placeholder="Description"
                   required
-                  name="descriptionInput"
+                  name="about"
                   id="inputDesc"
                   minlength="2"
                   maxlength="200"
@@ -150,17 +150,37 @@
               <h2 class="popup__title"></h2>
             </div>
           </div>
+          <div class="popup__container" id="certaintyPopup">
+            <div class="popup__certainty">
+              <button type="button" class="popup__button" aria-label="Close">
+                <img
+                  class="popup__close"
+                  alt="Close button image"
+                  src="<%= require('./images/close-icon.svg')%>"
+                  id="certaintyPopup-close"
+                />
+              </button>
+              <h2 class="popup__header popup__text">Are you sure?</h2>
+              <button
+                class="popup__save popup__confirm"
+                type="submit"
+                aria-label="Confirm"
+                id="certaintyConfirm"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
         </section>
         <section class="cards">
           <template id="card">
             <article class="card">
               <img class="card__image" alt="" src=" " />
               <h2 class="card__title"></h2>
-              <button
-                class="card__like"
-                aria-label="Like"
-                type="Button"
-              ></button>
+              <button class="card__like" aria-label="Like" type="Button">
+                <p class="card__like-number"></p>
+              </button>
+
               <button
                 class="card__trash"
                 aria-label="Trash"
