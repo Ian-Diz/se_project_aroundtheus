@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 class Card {
   constructor(
     {
@@ -8,6 +6,7 @@ class Card {
       handleDeleteConfirmation,
       confirmationFunction,
       handleLikeFunction,
+      onLoadLikeCheck,
     },
     templateSelector
   ) {
@@ -21,13 +20,27 @@ class Card {
     this._handleDeleteConfirmation = handleDeleteConfirmation;
     this._confirmationFunction = confirmationFunction;
     this._handleLikeFunction = handleLikeFunction;
+    this._onLoadLikeCheck = onLoadLikeCheck;
   }
 
   _getTemplate() {
     const cardElement = document
       .querySelector(this._templateSelector)
-      .content.cloneNode(true);
+      .content.querySelector(".card")
+      .cloneNode(true);
     return cardElement;
+  }
+
+  removeCard() {
+    this._element.remove();
+  }
+
+  likeNumberCheck(boolean) {
+    if (boolean) {
+      Number(++this._likeNumber.textContent);
+    } else {
+      Number(--this._likeNumber.textContent);
+    }
   }
 
   generateCard() {
@@ -39,6 +52,8 @@ class Card {
     this._likeNumber = this._element.querySelector(".card__like-number");
     this._trash = this._element.querySelector(".card__trash");
     this._likeButton = this._element.querySelector(".card__like");
+
+    this._onLoadLikeCheck(this._likeAmount, this._likeButton);
 
     this._likeNumber.textContent = this._likeAmount.length;
 
@@ -52,14 +67,6 @@ class Card {
 
     return this._element;
   }
-
-  /*_handleLikeButton(evt) {
-    evt.target.classList.toggle("card_like_activate");
-  }
-
-  _handleDeleteButton() {
-    this._confirmationFunction()
-  }*/
 
   _setEventHandlers() {
     this._element

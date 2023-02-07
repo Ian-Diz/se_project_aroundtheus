@@ -191,6 +191,10 @@
     max-width: 282px;
   }
 
+  .popup__certainty {
+    width: 282px;
+  }
+
   .popup__close {
     top: -39px;
     right: 0;
@@ -220,5 +224,9 @@
     height: 46px;
     font-size: 14px;
     line-height: 1.2;
+  }
+
+  .popup__confirm {
+    margin: 0 22px 0 22px;
   }
 }

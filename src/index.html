@@ -31,11 +31,13 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            class="profile__image"
-            alt="An image of Jacues Cousteau"
-            src="<%= require('./images/jacques-cousteaujacques_profile.svg')%>"
-          />
+          <div class="profile__image">
+            <img
+              class="profile__picture"
+              alt="An image of Jacues Cousteau"
+              src="<%= require('./images/editPicture.svg')%>"
+            />
+          </div>
           <div class="profile__layout">
             <h1 class="profile__title">Loading...</h1>
             <p class="profile__subtitle">Loading...</p>
@@ -61,7 +63,7 @@
                 </button>
                 <h2 class="popup__header">Edit Profile</h2>
                 <input
-                  class="popup__input popup__input-first"
+                  class="popup__input"
                   type="text"
                   placeholder="Name"
                   required
@@ -72,7 +74,7 @@
                 />
                 <span class="popup__input-error inputName-error"></span>
                 <input
-                  class="popup__input popup__input-second"
+                  class="popup__input"
                   type="text"
                   placeholder="Description"
                   required
@@ -106,7 +108,7 @@
                 </button>
                 <h2 class="popup__header">New Place</h2>
                 <input
-                  class="popup__input popup__input-first"
+                  class="popup__input"
                   type="text"
                   placeholder="Title"
                   required
@@ -117,7 +119,7 @@
                 />
                 <span class="popup__input-error inputTitle-error"></span>
                 <input
-                  class="popup__input popup__input-second"
+                  class="popup__input"
                   placeholder="Image link"
                   required
                   name="imageLink"
@@ -130,6 +132,38 @@
                   type="submit"
                   aria-label="Save"
                   id="addSave"
+                >
+                  Save
+                </button>
+              </fieldset>
+            </form>
+          </div>
+          <div class="popup__container" id="profilePicturePopup">
+            <form class="popup__form" name="addForm" id="profilePictureForm">
+              <fieldset class="popup__fieldset">
+                <button type="button" class="popup__button" aria-label="Close">
+                  <img
+                    class="popup__close"
+                    alt="Close button image"
+                    src="<%= require('./images/close-icon.svg')%>"
+                    id="profilePicturePopup-close"
+                  />
+                </button>
+                <h2 class="popup__header">Change Profile Picture</h2>
+                <input
+                  class="popup__input"
+                  placeholder="Image link"
+                  required
+                  name="avatar"
+                  id="profileLink"
+                  type="url"
+                />
+                <span class="popup__input-error profileLink-error"></span>
+                <button
+                  class="popup__save"
+                  type="submit"
+                  aria-label="Save"
+                  id="editSave"
                 >
                   Save
                 </button>
@@ -163,7 +197,7 @@
               <h2 class="popup__header popup__text">Are you sure?</h2>
               <button
                 class="popup__save popup__confirm"
-                type="submit"
+                type="button"
                 aria-label="Confirm"
                 id="certaintyConfirm"
               >

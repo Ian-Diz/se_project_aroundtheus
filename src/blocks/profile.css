@@ -5,10 +5,31 @@
 }
 
 .profile__image {
+  display: flex;
   border-radius: 50%;
   width: 120px;
   height: 120px;
   margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__image:hover {
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.profile__picture {
+  width: 26px;
+  height: 26px;
+  visibility: hidden;
+}
+
+.profile__picture_active {
+  visibility: visible;
 }
 
 .profile__layout {
@@ -98,6 +119,10 @@
 
   .profile__image {
     margin: 0 auto 0 auto;
+  }
+
+  .profile__image:hover {
+    opacity: 1;
   }
 
   .profile__layout {
