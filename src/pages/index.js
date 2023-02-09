@@ -56,14 +56,13 @@ export const api = new Api({
 const userInfo = new UserInfo({
   nameElem: profileTitle,
   jobElem: profileSubtitle,
-  avatar: profileImage.style.backgroundImage,
+  avatar: profileImage,
 });
 
 api
   .getData()
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData);
-    profileImage.style.backgroundImage = `url(${userData.avatar})`;
     const userId = userData._id;
     const initialCards = cardsData;
     const cardSection = new Section(
@@ -165,8 +164,6 @@ api
           .updatePfp(inputVal.avatar)
           .then((data) => {
             userInfo.setUserInfo(data);
-            const userData = userInfo.getUserInfo();
-            profileImage.style.backgroundImage = `url(${userData.avatar})`;
           })
           .catch((err) => {
             console.log(err);

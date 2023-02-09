@@ -16,6 +16,6 @@ export default class UserInfo {
   setUserInfo({ name, about, avatar }) {
     this._nameElem.textContent = name;
     this._jobElem.textContent = about;
-    this._avatar = avatar;
+    this._avatar.style.backgroundImage = `url(${avatar})`;
   }
 }
