@@ -10,10 +10,19 @@ export default class PopupWithConfirmation extends Popup {
     this._submitFunction = action;
   }
 
+  isLoading() {
+    this._confirmButton.textContent = "Deleting...";
+  }
+
+  finishLoading() {
+    setTimeout(() => {
+      this._confirmButton.textContent = "Yes";
+    }, 500);
+  }
+
   setEventListeners() {
     this._confirmButton.addEventListener("click", () => {
       this._submitFunction();
-      this.close();
     });
     super.setEventListeners();
   }

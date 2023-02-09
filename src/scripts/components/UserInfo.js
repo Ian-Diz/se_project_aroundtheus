@@ -5,10 +5,10 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return (info = {
+    return {
       name: this._nameElem.textContent,
       about: this._jobElem.textContent,
-    });
+    };
   }
 
   setUserInfo({ name, about }) {

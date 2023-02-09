@@ -45,7 +45,7 @@ export default class PopupWithForm extends Popup {
     super.close();
     setTimeout(() => {
       this._form.reset();
-    }, 500);
+    }, 400);
   };
 
   setEventListeners() {
