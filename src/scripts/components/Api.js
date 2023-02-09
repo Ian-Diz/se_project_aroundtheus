@@ -5,13 +5,7 @@ export default class Api {
   }
 
   getData() {
-    return Promise.all([this.getUserInfo(), this.getInitialCards()])
-      .then(([userData, cards]) => {
-        return [userData, cards];
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
   _sendRequest(link, config) {

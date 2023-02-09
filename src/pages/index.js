@@ -56,15 +56,16 @@ export const api = new Api({
 const userInfo = new UserInfo({
   nameElem: profileTitle,
   jobElem: profileSubtitle,
+  avatar: profileImage.style.backgroundImage,
 });
 
 api
   .getData()
-  .then((data) => {
-    userInfo.setUserInfo(data[0]);
-    profileImage.style.backgroundImage = `url(${data[0].avatar})`;
-    const userId = data[0]._id;
-    const initialCards = data[1];
+  .then(([userData, cardsData]) => {
+    userInfo.setUserInfo(userData);
+    profileImage.style.backgroundImage = `url(${userData.avatar})`;
+    const userId = userData._id;
+    const initialCards = cardsData;
     const cardSection = new Section(
       {
         initialCards,
@@ -99,7 +100,7 @@ api
                     .removeLike(card.getId())
                     .then((data) => {
                       card.removeLike();
-                      card.likeNumberCheck(data.likes.length);
+                      card.setLikeNumber(data.likes.length);
                     })
                     .catch((err) => {
                       console.log(err);
@@ -109,7 +110,7 @@ api
                     .addLike(card.getId())
                     .then((data) => {
                       card.addLike();
-                      card.likeNumberCheck(data.likes.length);
+                      card.setLikeNumber(data.likes.length);
                     })
                     .catch((err) => {
                       console.log(err);
@@ -162,15 +163,10 @@ api
         editPictureForm.isLoading();
         api
           .updatePfp(inputVal.avatar)
-          .then(() => {
-            api
-              .getUserInfo()
-              .then((data) => {
-                profileImage.style.backgroundImage = `url(${data.avatar})`;
-              })
-              .catch((err) => {
-                console.log(err);
-              });
+          .then((data) => {
+            userInfo.setUserInfo(data);
+            const userData = userInfo.getUserInfo();
+            profileImage.style.backgroundImage = `url(${userData.avatar})`;
           })
           .catch((err) => {
             console.log(err);

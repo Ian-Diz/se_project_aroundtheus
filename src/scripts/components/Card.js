@@ -35,7 +35,7 @@ class Card {
     this._element.remove();
   }
 
-  likeNumberCheck(likeAmount) {
+  setLikeNumber(likeAmount) {
     console.log(likeAmount.length);
     this._likeNumber.textContent = likeAmount;
   }
